@@ -50,7 +50,6 @@
 
 
 */
-
 /**
  * Define a function named `yelling` that takes an array of
  * strings as an argument and returns a new array with all
@@ -60,42 +59,60 @@
  *
  * const yelling = (array) => {
  *    // your code here
+ *
  * }
  */
-
+const yelling = array => {
+  return array.map(element => {
+    return element.toUpperCase()
+  })
+}
 // ...
-
 /**
  *
  * Define a function named `doubleTrouble` that takes an array of
  * numbers as an argument and returns a new array with all
  * the numbers multiplied by 2
  */
-
+const doubleTrouble = arrayOfNumbers => {
+  return arrayOfNumbers.map(value => {
+    return value * 2
+  })
+}
 // ...
-
 /*
  * Define a function stringyIndexes() that takes an array of
  * strings as an argument and returns a new array with each string
  * suffixed with " is at index X" where X is the index of the element
  */
-
+const stringyIndexes = array => {
+  let indexCount = -1
+  return array.map(arr => {
+    indexCount += 1
+    return arr + ' is at index ' + indexCount
+  })
+}
 // ...
-
 /*
  * Define a function onlyTheEvenSurvive that accepts an array of
  * numbers and returns only the elements that are even
  */
-
+const onlyTheEvenSurvive = arrayOfNumbers => {
+  return arrayOfNumbers.filter(value => {
+    return value % 2 === 0
+  })
+}
 // ...
-
 /*
  * Define a function onlyTheEvenIndexedSurvive that accepts an array of
  * numbers and returns only the elements at indexes that are even
  */
-
+const onlyTheEvenIndexedSurvive = arrayOfNumbers => {
+  return arrayOfNumbers.filter((value, index) => {
+    return index % 2 === 0
+  })
+}
 // ...
-
 /*
  * Define a function bestMoviesOfTheYear that accepts an array of
  * movie objects AND a year and returns the names of movies that are
@@ -109,41 +126,69 @@
  *   score: 99
  * }
  */
-
+const bestMoviesOfTheYear = (arrayOfMovies, year) => {
+  return arrayOfMovies
+    .filter(movie => {
+      return movie.score > 90 && movie.year === year
+    })
+    .map(movie => {
+      return movie.name
+    })
+}
 // ...
-
 /*
  * Define a function everyoneIsOdd that accepts an array of
  * numbers and returns true if every element of the array is
  * odd.
  */
-
+const everyoneIsOdd = arrayOfNumbers => {
+  const odd = arrayOfNumbers.filter(value => {
+    return value % 2 !== 0
+  })
+  if (arrayOfNumbers.length === odd.length) {
+    return true
+  } else {
+    return false
+  }
+}
 // ...
-
 /*
  * Define a function findTheNeedle that accepts an array of
  * strings and returns the one string that contains the word
  * `needle` inside
  */
-
+const findTheNeedle = array => {
+  const needle = array.filter(item => {
+    return item.toLowerCase().includes('needle')
+  })
+  return needle[0]
+}
 // ...
-
 /*
  * Define a function findTheNeedleIndex that accepts an array of
  * strings and returns the index of the string that contains
  *  the word `needle` inside
  */
-
+const findTheNeedleIndex = arrayOfStrings => {
+  return arrayOfStrings.findIndex(value => value.includes('needle'))
+}
 // ...
-
 /*
  * Define a function someoneToLove that accepts an array of
  * strings and returns true if at least one string is exactly
  * four characters long
  */
+const someoneToLove = array => {
+  let inLove = false
 
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].length === 4) {
+      inLove = true
+    }
+  }
+  return inLove
+}
 // ...
-
 /*
  * Define a function mapYourself that accepts an array of
  * numbers and returns a new array where each number is doubled.
@@ -152,7 +197,15 @@
  *
  * So no using forEach, map, filter, reduce, etc.
  */
-
+const mapYourself = array => {
+  let array1 = []
+  for (let i = 0; i < array.length; i++) {
+    let newElement = array[i]
+    newElement = newElement * 2
+    array1.push(newElement)
+  }
+  return array1
+}
 // ...
 
 /*
@@ -164,7 +217,15 @@
  *
  * So no using forEach, map, filter, reduce, etc.
  */
-
+const filterYourself = array => {
+  let array1 = []
+  for (let i = 0; i < array.length; i++) {
+    if (i % 2 === 0) {
+      array1.push(array[i])
+    }
+  }
+  return array1
+}
 // ...
 
 /*
@@ -176,7 +237,15 @@
  *
  * So no using forEach, map, filter, reduce, etc.
  */
-
+const everyYourself = array => {
+  let array1 = []
+  for (let i = 0; i < array.length; i++) {
+    if (i % 2 === 0) {
+      array1.push(array[i])
+    }
+  }
+  return array1
+}
 // ...
 
 /**
@@ -189,7 +258,9 @@ import test from 'ava'
 
 const ensureDefined = (t, method) => {
   if (eval(`typeof ${method}`) !== 'function') {
-    t.fail(`\n\n\n\n\n⚡️⚡️⚡️⚡️⚡️ The next step is to define the function ${method} ⚡️⚡️⚡️⚡️⚡️\n\n\n`)
+    t.fail(
+      `\n\n\n\n\n⚡️⚡️⚡️⚡️⚡️ The next step is to define the function ${method} ⚡️⚡️⚡️⚡️⚡️\n\n\n`
+    )
   }
 }
 
